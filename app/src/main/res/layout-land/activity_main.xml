@@ -13,32 +13,31 @@
     tools:context="com.example.saar.saarhoek_pset2.MainActivity">
 
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/madlibs"
-        android:id="@+id/imageView"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
-
     <TextView
         android:text="Welcome to MadLibs! \nFill in words to receive a funny story. \nPress button to start."
         android:gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView"
-        android:layout_below="@+id/imageView"
-        android:layout_alignStart="@+id/imageView"
-        android:layout_alignEnd="@+id/imageView"
+        android:layout_toRightOf="@+id/imageView"
         android:textSize="16sp"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/madlibs"
+        android:id="@+id/imageView"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:text="Begin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView"
-        android:layout_centerHorizontal="true"
+        android:layout_alignEnd="@+id/textView"
+        android:layout_marginEnd="87dp"
         android:id="@+id/button"
         android:onClick="toForm"
-        style="@style/Widget.AppCompat.Button.Borderless.Colored" />
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:layout_below="@+id/textView" />
 </RelativeLayout>

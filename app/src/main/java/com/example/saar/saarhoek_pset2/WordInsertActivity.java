@@ -17,7 +17,6 @@ import java.io.InputStream;
 public class WordInsertActivity extends AppCompatActivity {
 
     private Story story_time;
-    private InputStream stream;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +24,7 @@ public class WordInsertActivity extends AppCompatActivity {
         setContentView(R.layout.activity_word_insert);
 
         // set university as story (for starters)
-        stream = this.getResources().openRawResource(R.raw.madlib2_university);
+        InputStream stream = this.getResources().openRawResource(R.raw.madlib2_university);
 
         // create the new story
         story_time = new Story(stream);
@@ -37,10 +36,8 @@ public class WordInsertActivity extends AppCompatActivity {
 
         // wordtype to fill in
         String wordtype = story_time.getNextPlaceholder();
-        EditText filledWord = (EditText) findViewById(R.id.filler);
-        filledWord.setHint(wordtype);
-        TextView go_type = (TextView) findViewById(R.id.wordtype);
-        go_type.setText("I need a(n): " + wordtype + "___");
+        EditText filler = (EditText) findViewById(R.id.filler);
+        filler.setHint(wordtype);
     }
 
     // safeguarding in case of rotation
@@ -64,13 +61,11 @@ public class WordInsertActivity extends AppCompatActivity {
 
         // restoring wordtype
         String wordtype = inState.getString("wordtype");
-        EditText filledWord = (EditText) findViewById(R.id.filler);
-        filledWord.setHint(wordtype);
-        TextView go_type = (TextView) findViewById(R.id.wordtype);
-        go_type.setText("I need a(n): " + wordtype + "___");
+        EditText filler = (EditText) findViewById(R.id.filler);
+        filler.setHint(wordtype);
 
         // and countdown
-        int words_left = inState.getInt("remaining_words");
+        int words_left = inState.getInt("words_left");
         TextView countdown = (TextView)findViewById(R.id.countdown);
         countdown.setText("Just " + Integer.toString(words_left) + " more to go!");
     }
@@ -90,8 +85,7 @@ public class WordInsertActivity extends AppCompatActivity {
             toast.show();
         }
 
-        if (story_time.isFilledIn())
-        {
+        if (story_time.isFilledIn()) {
             Intent goToStory = new Intent(this, StoryViewActivity.class);
             goToStory.putExtra("story_time", story_time.toString());
             startActivity(goToStory);
@@ -113,8 +107,6 @@ public class WordInsertActivity extends AppCompatActivity {
             String wordtype = story_time.getNextPlaceholder();
             EditText fillWord = (EditText) findViewById(R.id.filler);
             fillWord.setHint(wordtype);
-            TextView go_type = (TextView) findViewById(R.id.wordtype);
-            go_type.setText("I need a(n): " + wordtype + "___");
 
             Toast toast = Toast.makeText(this, "Good. Feed me more.", Toast.LENGTH_SHORT);
             toast.show();
