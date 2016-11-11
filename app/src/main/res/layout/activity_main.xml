@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
@@ -10,17 +11,34 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.saar.saarhoek_pset2.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello! What is your name?"
-        android:textSize="28sp"
-        android:id="@+id/ask" />
 
-    <EditText
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/ask"
-        android:hint="Name"
-        android:textSize="20sp"/>
+        app:srcCompat="@drawable/madlibs"
+        android:id="@+id/imageView"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:text="Welcome to MadLibs! \nFill in words to receive a funny story. \nPress button to start."
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView"
+        android:layout_below="@+id/imageView"
+        android:layout_alignStart="@+id/imageView"
+        android:layout_alignEnd="@+id/imageView"
+        android:textSize="16sp"/>
+
+    <Button
+        android:text="Begin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/button"
+        android:elevation="0dp"
+        android:onClick="startButtonClick"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored" />
 </RelativeLayout>
